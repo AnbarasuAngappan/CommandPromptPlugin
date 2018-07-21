@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 using System.AddIn;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
+using System.Windows.Controls;
+using System.Drawing.Printing;
+using System.Xml;
+using System.Xml.Linq;
+using System.IO;
+using System.Windows.Documents;
+using System.Windows.Xps;
+using System.Windows.Xps.Packaging;
+using Spire;
+using Spire.Pdf;
 
 namespace CommandPromptPlugin
 {
@@ -146,11 +156,123 @@ namespace CommandPromptPlugin
                         Is64BitOperatingSystem = false;
                         break;
                 }
-            }
-         
+            }        
                  
         }
 
+        public void PirntDialog(string PrinterName,string DocumentName,UInt16 MinPage, UInt16 MaxPage)
+        {
+            //PrintDialog printDialog = new PrintDialog();
+            //PrintDocument printDocument = new PrintDocument();
+            //printDocument.DocumentName = DocumentName;
+
+            //printDialog.PrintDocument();
+
+
+            //printDocument.DefaultPageSettings.PrinterSettings.PrinterName = PrinterName;
+            //printDocument.DefaultPageSettings.PrinterSettings.MinimumPage = MinPage;
+            //printDocument.DefaultPageSettings.PrinterSettings.MaximumPage = MaxPage;
+
+
+            //if (printDialog.ShowDialog() == true)
+            //    printDocument.Print();
+
+            //if (printDialog.ShowDialog() == DialogResult.OK)
+
+            //    printDoc.Print();
+
+            //PrintDocument printDoc = new PrintDocument();
+            //printDoc.DocumentName = "Print Document";
+            //printDialog.Document = printDoc;
+            //printDialog.AllowSelection = true;
+            //printDialog.AllowSomePages = true;
+
+            ////Call ShowDialog
+
+
+
+
+            //PrintDialog pDialog = new PrintDialog();
+            //pDialog.PageRangeSelection = PageRangeSelection.AllPages;
+            //pDialog.UserPageRangeEnabled = true;
+
+            //pDialog.MinPage = MinPage;
+            //pDialog.MaxPage = MaxPage;       
+
+
+
+            //// Display the dialog. This returns true if the user presses the Print button.
+            //Nullable<Boolean> print = pDialog.ShowDialog();
+            //if (print == true)
+            //{
+
+            //    var webClient = new System.Net.WebClient();
+            //    var data = webClient.DownloadData(DocumentName);
+            //    var package = System.IO.Packaging.Package.Open(new System.IO.MemoryStream(data));
+            //    var xpsDocument = new System.Windows.Xps.Packaging.XpsDocument(package,
+            //                                                              System.IO.Packaging.CompressionOption.SuperFast,
+            //                                                              DocumentName);
+            //    var sequence = xpsDocument.GetFixedDocumentSequence();
+
+
+            //    //XpsDocument xpsDocument = new XpsDocument(DocumentName, FileAccess.ReadWrite);//Windows
+            //    //FixedDocumentSequence fixedDocSeq = xpsDocument.GetFixedDocumentSequence();
+            //    //pDialog.PrintDocument(fixedDocSeq.DocumentPaginator, "");//PrintDocument(fixedDocSeq.DocumentPaginator, "Test print job");//PresentaionCore
+            //}
+
+
+        }
+
+        public void PrintPDF(string PDFFilePath)
+        {
+            PdfDocument doc = new PdfDocument();           
+            doc.LoadFromFile(PDFFilePath);
+#pragma warning disable CS0618 // Type or member is obsolete
+            doc.PrintDocument.Print();
+#pragma warning restore CS0618 // Type or member is obsolete
+            #region
+            //PrintDialog dialogPrint = new PrintDialog();
+
+
+            //printDialog.Document = printDoc;
+            //printDialog.AllowSelection = true;
+            //printDialog.AllowSomePages = true;
+
+            //dialogPrint.AllowPrintToFile = true;
+
+            //dialogPrint.AllowSomePages = true;
+
+            //dialogPrint.PrinterSettings.MinimumPage = 1;
+
+            //dialogPrint.PrinterSettings.MaximumPage = doc.Pages.Count;
+
+            //dialogPrint.PrinterSettings.FromPage = 1;
+
+            //dialogPrint.PrinterSettings.ToPage = doc.Pages.Count;
+
+
+
+
+            //if (dialogPrint.ShowDialog() == DialogResult.OK)
+
+            //{
+
+            //    doc.PrintFromPage = dialogPrint.PrinterSettings.FromPage;
+
+            //    doc.PrintToPage = dialogPrint.PrinterSettings.ToPage;
+
+            //    doc.PrinterName = dialogPrint.PrinterSettings.PrinterName;
+
+
+
+
+            //    PrintDocument printDoc = doc.PrintDocument;
+
+            //    printDoc.Print();
+
+            //}
+            #endregion
+        }
 
         //public static void Boolmanipulation(bool ADD,bool MUL,bool DIV, out int Add, out int Mul, out int Div)
         //{         

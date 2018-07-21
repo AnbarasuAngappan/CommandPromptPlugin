@@ -33,8 +33,9 @@ namespace WpfAppTestCommandPrompt
             //commadPrompt.ExecuteCommandPrompt("ipconfig");
 
             //commadPrompt.DisconnectRemoteDesktop();
-            commadPrompt.Manipulation("0,1");
-            
+            //commadPrompt.Manipulation("0,1");
+            //commadPrompt.PirntDialog("",@"D:\Anbu\Personal\RC Book Request Letter.pdf",1,2);
+            commadPrompt.PrintPDF(@"D:\Anbu\MVC Framework 4.pdf");
 
         }
     }
